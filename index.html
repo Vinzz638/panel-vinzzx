@@ -2,81 +2,74 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINZZXHOST - PANEL</title>
     <style>
-        /* CSS DASAR */
-        body { background-color: #000000; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding: 20px; overflow-x: hidden; }
-        .container { width: 100%; max-width: 380px; position: relative; }
+        /* CSS DASAR & EFEK SMOOTH */
+        body { background-color: #000000; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding: 20px; transition: all 0.5s ease; }
+        .container { width: 100%; max-width: 380px; }
         
-        /* HEADER */
+        /* LOGO & BRAND */
         .header { text-align: center; margin-bottom: 20px; }
         .logo-circle { 
             width: 85px; height: 85px; border-radius: 50%; 
             border: 2px solid #00ff44; margin: 0 auto 10px;
-            box-shadow: 0 0 10px #00ff44; overflow: hidden; background: #222;
+            box-shadow: 0 0 15px #00ff44; overflow: hidden; background: #222;
         }
         .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
-        .brand { font-size: 22px; font-weight: bold; letter-spacing: 2px; }
+        .brand { font-size: 22px; font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 10px #00ff44; }
 
         /* TOMBOL WA SMOOTH */
         .btn-outline {
-            display: block; width: 100%; padding: 10px;
-            border: 1px solid #00ff44; border-radius: 20px;
-            background: rgba(0, 255, 68, 0.1);
+            display: block; width: 100%; padding: 12px;
+            border: 1px solid #00ff44; border-radius: 25px;
+            background: rgba(0, 255, 68, 0.05);
             color: #00ff44; text-decoration: none; font-weight: bold;
-            margin-bottom: 25px; text-align: center; box-sizing: border-box; font-size: 13px;
-            transition: all 0.3s ease;
+            margin-bottom: 25px; text-align: center; box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-outline:active { transform: scale(0.95); background: rgba(0, 255, 68, 0.3); }
+        .btn-outline:active { transform: scale(0.92); background: rgba(0, 255, 68, 0.2); }
 
         /* CARD */
-        .card { background: #111111; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #222; }
+        .card { background: #0a0a0a; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #1a1a1a; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .title-section { color: white; font-size: 16px; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; }
         .title-section::before { content: ""; display: inline-block; width: 4px; height: 20px; background: #00ff44; margin-right: 10px; border-radius: 2px; }
 
-        input { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333; color: #00ff44; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; }
+        input { width: 100%; padding: 12px; background: #151515; border: 1px solid #333; color: #00ff44; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; transition: border 0.3s; }
+        input:focus { border-color: #00ff44; }
 
-        /* TOMBOL HIJAU GRADASI SMOOTH */
+        /* TOMBOL GRADASI */
         .btn-grad { 
             width: 100%; padding: 12px; border: none; border-radius: 8px; 
-            background: linear-gradient(to right, #00b09b, #96c93d); 
-            color: black; font-weight: bold; cursor: pointer; font-size: 14px; 
+            background: linear-gradient(45deg, #00b09b, #96c93d); 
+            color: black; font-weight: bold; cursor: pointer;
             transition: all 0.3s ease;
         }
         .btn-grad:active { transform: scale(0.95); opacity: 0.8; }
 
         /* TABEL */
         .table-email { width: 100%; margin-top: 10px; border-collapse: collapse; }
-        .table-email th { text-align: left; color: #00ff44; font-size: 11px; padding-bottom: 10px; }
-        .table-email td { padding: 10px 0; border-top: 1px solid #222; font-size: 13px; }
+        .table-email td { padding: 12px 0; border-top: 1px solid #1a1a1a; font-size: 13px; animation: slideIn 0.4s ease forwards; }
         
-        /* TOMBOL PUSAT BIRU SMOOTH */
-        .btn-blue { 
-            background: linear-gradient(to right, #00d2ff, #3a7bd5); 
-            border:none; width:100%; padding:12px; border-radius:8px; 
-            color:white; font-weight:bold; cursor:pointer; font-size: 14px; 
-            margin-top: 10px; text-decoration: none; display: block; text-align: center; 
-            box-sizing: border-box; transition: all 0.3s ease;
-        }
-        .btn-blue:active { transform: scale(0.95); opacity: 0.8; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* MODAL BERHASIL (SESUAI GAMBAR) */
+        /* MODAL NOTIF (SANGAT SMOOTH) */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); display: flex; justify-content: center;
-            align-items: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999;
+            background: rgba(0,0,0,0.8); display: flex; justify-content: center;
+            align-items: center; opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999;
         }
         .modal-overlay.show { opacity: 1; visibility: visible; }
         .modal-content {
-            background: white; color: black; padding: 30px; border-radius: 15px;
-            text-align: center; width: 80%; max-width: 300px; transform: scale(0.7); transition: all 0.3s ease;
+            background: white; color: black; padding: 30px; border-radius: 20px;
+            text-align: center; width: 280px; transform: translateY(30px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .modal-overlay.show .modal-content { transform: scale(1); }
+        .modal-overlay.show .modal-content { transform: translateY(0); }
         .success-icon {
-            width: 60px; height: 60px; border-radius: 50%; border: 3px solid #00ff44;
-            color: #00ff44; font-size: 40px; display: flex; justify-content: center;
-            align-items: center; margin: 0 auto 15px;
+            width: 50px; height: 50px; border-radius: 50%; border: 3px solid #00ff44;
+            color: #00ff44; font-size: 30px; display: flex; justify-content: center;
+            align-items: center; margin: 0 auto 15px; font-weight: bold;
         }
-        .btn-modal-ok { background: #3a7bd5; color: white; border: none; padding: 10px 30px; border-radius: 5px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        .btn-modal-ok { background: #3a7bd5; color: white; border: none; padding: 10px 40px; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -84,8 +77,8 @@
 <div class="modal-overlay" id="notifBerhasil">
     <div class="modal-content">
         <div class="success-icon">✓</div>
-        <div style="font-size: 18px; font-weight: bold;">Berhasil!</div>
-        <div style="font-size: 14px; color: #555;">Data berhasil diubah.</div>
+        <div style="font-size: 18px; font-weight: bold; margin-bottom: 5px;">Berhasil!</div>
+        <div style="font-size: 14px; color: #666;">Data telah diperbarui & disimpan.</div>
         <button class="btn-modal-ok" onclick="tutupNotif()">OK</button>
     </div>
 </div>
@@ -98,7 +91,7 @@
         <div class="brand">VINZZXHOST</div>
     </div>
 
-    <a href="https://wa.me/628818486388?text=bang%20vinzz%20mau%20sewa%20panel%20dong" target="_blank" class="btn-outline">🌐 SEWA PANEL KLIK DISINI</a>
+    <a href="https://wa.me/628818486388" class="btn-outline">🌐 SEWA PANEL KLIK DISINI</a>
 
     <div class="card">
         <div class="title-section">DATA PANEL</div>
@@ -109,52 +102,70 @@
     <div class="card">
         <div class="title-section">Email Configuration</div>
         <div style="display: flex; gap: 10px;">
-            <input type="text" id="inputEmail" placeholder="Target Email..." style="flex: 3;">
-            <input type="number" id="inputLimit" placeholder="120" style="flex: 1; text-align: center;">
+            <input type="text" id="inputEmail" placeholder="Target Email..." style="flex: 2;">
+            <input type="number" id="inputLimit" placeholder="120" style="flex: 1;">
         </div>
         <button class="btn-grad" onclick="tambahEmail()">ADD EMAIL</button>
 
         <table class="table-email">
-            <thead>
-                <tr>
-                    <th>EMAIL</th>
-                    <th>LIMIT</th>
-                    <th style="text-align: right;">DEL</th>
-                </tr>
-            </thead>
-            <tbody id="listEmail"></tbody>
+            <tbody id="listEmail">
+                </tbody>
         </table>
     </div>
-
-    <a href="#" class="btn-blue">🌐 PUSAT/PANEL ( KLIK DISINI )</a>
 </div>
 
 <script>
-    function munculNotif() { document.getElementById("notifBerhasil").classList.add("show"); }
-    function tutupNotif() { document.getElementById("notifBerhasil").classList.remove("show"); }
+    // Fungsi muncul & tutup notif
+    function munculNotif() {
+        document.getElementById("notifBerhasil").classList.add("show");
+    }
+    function tutupNotif() {
+        document.getElementById("notifBerhasil").classList.remove("show");
+    }
+
+    // FUNGSI LOCALSTORAGE (BIAR GAK KERESET)
+    window.onload = function() {
+        var dataSimpanan = localStorage.getItem('dataEmailVinzz');
+        if (dataSimpanan) {
+            document.getElementById('listEmail').innerHTML = dataSimpanan;
+        }
+    };
+
+    function simpanData() {
+        var isiTabel = document.getElementById('listEmail').innerHTML;
+        localStorage.setItem('dataEmailVinzz', isiTabel);
+    }
 
     function tambahEmail() {
         var email = document.getElementById("inputEmail").value;
-        var limit = document.getElementById("inputLimit").value;
-        if (email == "") { alert("Isi email dulu bang!"); return; }
-        if (limit == "") { limit = "0"; }
+        var limit = document.getElementById("inputLimit").value || "0";
+        
+        if (email == "") { alert("Isi emailnya dulu bang!"); return; }
 
         var table = document.getElementById("listEmail");
         var row = table.insertRow(0);
         row.innerHTML = `
             <td style="color: #00ff44;">${email}</td>
-            <td><span style="background:#222; color: #00ff44; padding: 2px 5px; border-radius: 4px;">${limit}</span></td>
-            <td style="text-align: right; color: #ff416c; cursor:pointer;" onclick="hapusBaris(this)">🗑️</td>
+            <td style="text-align:center;"><span style="background:#1a1a1a; color: #00ff44; padding: 2px 8px; border-radius: 4px; border: 1px solid #333;">${limit}</span></td>
+            <td style="text-align: right; color: #ff416c; cursor:pointer; font-size:18px;" onclick="hapusBaris(this)">🗑️</td>
         `;
+        
         document.getElementById("inputEmail").value = "";
         document.getElementById("inputLimit").value = "";
+        
+        simpanData(); // Simpan ke memori HP
+        munculNotif(); // Munculin notif berhasil
     }
 
     function hapusBaris(btn) {
-        var row = btn.parentNode.parentNode;
-        row.parentNode.removeChild(row);
+        if(confirm("Hapus email ini bang?")) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            simpanData(); // Update memori HP setelah dihapus
+        }
     }
 </script>
 
 </body>
 </html>
+
