@@ -3,193 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VINZZXHOST - NEON EDITION</title>
+    <title>VINZZXHOST - OWNER PERMANENT FIX</title>
     <style>
-        body { 
-            background-color: #000; 
-            color: white; 
-            font-family: sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding: 40px 20px; 
-            margin: 0; 
+        body { background-color: #000; color: white; font-family: -apple-system, BlinkMacSystemFont, sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; margin: 0; overflow-x: hidden; }
+        
+        #toast {
+            visibility: hidden; position: fixed; top: 20px; background: rgba(74, 222, 128, 0.95);
+            color: #000; padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 14px;
+            z-index: 999; box-shadow: 0 5px 15px rgba(74, 222, 128, 0.3);
+            transform: translateY(-100px); transition: 0.5s ease;
         }
+        #toast.show { visibility: visible; transform: translateY(0); }
 
-        .logo-v { 
-            width: 80px; 
-            height: 80px; 
-            border-radius: 50%; 
-            border: 2px solid #4ade80; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 40px; 
-            color: #4ade80; 
-            box-shadow: 0 0 20px #4ade80; 
-            margin-bottom: 10px; 
-            font-weight: bold;
-        }
-
-        .brand { 
-            letter-spacing: 5px; 
-            margin-bottom: 25px; 
-            font-size: 22px; 
-            font-weight: bold;
-            text-transform: uppercase; 
-        }
-
-        .btn-sewa { 
-            border: 1px solid #4ade80; 
-            color: #4ade80; 
-            padding: 8px 25px; 
-            border-radius: 20px; 
-            text-decoration: none; 
-            font-size: 11px; 
-            margin-bottom: 35px; 
-        }
-
-        .card { 
-            background: #0d0d0d; 
-            border-radius: 15px; 
-            padding: 25px; 
-            width: 340px; 
-            border: 1px solid #1a1a1a; 
-            margin-bottom: 20px; 
-            box-sizing: border-box; 
-        }
-
-        .card-title { 
-            color: #4ade80; 
-            font-size: 14px; 
-            margin-bottom: 20px; 
-            border-left: 3px solid #4ade80; 
-            padding-left: 10px; 
-            font-weight: bold; 
-            text-align: left;
-        }
-
-        input { 
-            width: 100%; 
-            background: #161616; 
-            border: 1px solid #222; 
-            color: #ccc; 
-            padding: 14px; 
-            margin-bottom: 15px; 
-            border-radius: 10px; 
-            box-sizing: border-box; 
-            outline: none; 
-            text-align: left; 
-            font-size: 14px;
-        }
-
-        /* 🟢 Neon Lime buat Input Atas & Tengah */
-        .inp-editable { 
-            border: 1px solid #4ade80; 
-            color: #4ade80; /* Teks Neon Hijau */
-            font-weight: bold;
-            box-shadow: 0 0 5px rgba(74, 222, 128, 0.2);
-        }
-
-        .inp-readonly { 
-            color: #4ade80; /* Teks Neon Hijau */
-            font-weight: bold; 
-            cursor: not-allowed; 
-            border: 1px solid #4ade80; /* Border Neon Hijau */
-            background: #0d0d0d;
-            box-shadow: 0 0 5px rgba(74, 222, 128, 0.2);
-        }
-
-        .btn-update { 
-            width: 100%; 
-            padding: 15px; 
-            background: linear-gradient(to right, #15803d, #4ade80); 
-            border: none; 
-            border-radius: 10px; 
-            color: black; 
-            font-weight: bold; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-        }
-
-        .card-config { 
-            background: #0d0d0d; 
-            border-radius: 15px; 
-            padding: 20px; 
-            width: 340px; 
-            border: 1px solid #1a1a1a; 
-            margin-bottom: 20px; 
-            box-sizing: border-box; 
-        }
-
+        .logo-v { width: 80px; height: 80px; border-radius: 50%; border: 2px solid #4ade80; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #4ade80; box-shadow: 0 0 20px #4ade80; margin-bottom: 10px; font-weight: bold; }
+        .brand { letter-spacing: 5px; margin-bottom: 25px; font-size: 22px; font-weight: bold; text-transform: uppercase; }
+        .btn-sewa { border: 1px solid #4ade80; color: #4ade80; padding: 8px 25px; border-radius: 20px; text-decoration: none; font-size: 11px; margin-bottom: 35px; font-weight: bold; display: inline-block; }
+        
+        .card { background: #0d0d0d; border-radius: 15px; padding: 25px; width: 340px; border: 1px solid #1a1a1a; margin-bottom: 20px; box-sizing: border-box; }
+        .card-title { color: #4ade80; font-size: 14px; margin-bottom: 20px; border-left: 3px solid #4ade80; padding-left: 10px; font-weight: bold; text-align: left; }
+        
+        input { width: 100%; background: #161616; border: 1px solid #222; color: #fff; padding: 14px; margin-bottom: 15px; border-radius: 10px; box-sizing: border-box; outline: none; text-align: left; font-size: 14px; }
+        /* Input Owner yang abang maksud */
+        .inp-owner { border: 1px solid #4ade80 !important; color: #4ade80 !important; font-weight: bold; background: #0d0d0d !important; }
+        .inp-readonly { color: #4ade80; font-weight: bold; cursor: not-allowed; border: 1px solid #222; background: #111; }
+        
+        .btn-update { width: 100%; padding: 15px; background: linear-gradient(to right, #15803d, #4ade80); border: none; border-radius: 10px; color: black; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        
+        .card-config { background: #0d0d0d; border-radius: 15px; padding: 20px; width: 340px; border: 1px solid #1a1a1a; margin-bottom: 20px; box-sizing: border-box; }
         .config-row { display: flex; gap: 10px; }
-        .inp-target { 
-            flex: 2; 
-            border: 1px solid rgba(74, 222, 128, 0.4); /* Neon Hijau Tipis */
-            color: #ccc;
-        }
-        .inp-jml { 
-            flex: 1; 
-            border: 1px solid rgba(74, 222, 128, 0.4); /* Neon Hijau Tipis */
-            color: #ccc;
-            text-align: center; 
-        }
+        .inp-target { flex: 2; border: 1px solid #222; }
+        .inp-jml { flex: 1; border: 1px solid #222; text-align: center; }
+        .btn-add { width: 100%; padding: 12px; background: #1a1a1a; color: #fff; border: 1px solid #333; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
 
-        .btn-add { 
-            width: 100%; 
-            padding: 12px; 
-            background: #1a1a1a; 
-            color: #fff; 
-            border: 1px solid #333; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            cursor: pointer; 
-        }
+        #listContainer { width: 100%; margin-top: 10px; border-top: 1px solid #222; padding-top: 10px; }
+        .list-item { display: flex; justify-content: space-between; align-items: center; font-size: 12px; padding: 10px 5px; border-bottom: 1px solid #1a1a1a; color: #aaa; }
+        .list-item b { color: #4ade80; margin-left: auto; margin-right: 15px; background: #1a1a1a; padding: 2px 8px; border-radius: 5px; }
+        .btn-del { color: #ff4d4d; font-weight: bold; cursor: pointer; font-size: 18px; padding-left: 10px; }
 
-        .btn-pusat { 
-            width: 340px; 
-            padding: 15px; 
-            background: linear-gradient(to right, #38bdf8, #2563eb); 
-            border: none; 
-            border-radius: 10px; 
-            color: white; 
-            font-weight: bold; 
-            text-decoration: none; 
-            text-align: center; 
-            text-transform: uppercase; 
-            font-size: 13px; 
-            display: block; 
-            box-sizing: border-box; 
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-        }
+        .btn-pusat { width: 340px; padding: 15px; background: linear-gradient(to right, #38bdf8, #2563eb); border: none; border-radius: 10px; color: white; font-weight: bold; text-decoration: none; text-align: center; text-transform: uppercase; font-size: 13px; display: block; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
+    <div id="toast">Berhasil! ⚡</div>
+
     <div class="logo-v">V</div>
     <div class="brand">VINZZXHOST</div>
-    <a href="#" class="btn-sewa">🌐 SEWA PANEL KLIK DISINI</a>
+    
+    <a href="https://api.whatsapp.com/send?phone=628818486388" target="_blank" class="btn-sewa">🌐 SEWA PANEL KLIK DISINI</a>
 
     <div class="card">
         <div class="card-title">DATA PANEL</div>
-        
-        <input type="text" class="inp-editable" value="Result Own Vinz 💀">
-        
+        <input type="text" class="inp-owner" id="ownerName" value="Result Own Vinz 💀">
         <input type="text" class="inp-readonly" value="vinz0129@gmail.com" readonly>
-        
-        <button class="btn-update">UPDATE DATA</button>
+        <button onclick="handleUpdate()" class="btn-update">UPDATE DATA</button>
     </div>
 
     <div class="card-config">
         <div class="card-title">Email Configuration</div>
         <div class="config-row">
-            <input type="text" class="inp-target" placeholder="Target Email...">
-            <input type="text" class="inp-jml" placeholder="Jml">
+            <input type="text" id="targetEmail" class="inp-target" placeholder="Target Email...">
+            <input type="text" id="targetJml" class="inp-jml" placeholder="Jml">
         </div>
-        <button class="btn-add">ADD EMAIL</button>
+        <button onclick="handleAddEmail()" class="btn-add">ADD EMAIL</button>
+        
+        <div id="listContainer">
+            <div id="noData" style="font-size: 10px; color: #555; text-align: center;">DAFTAR MASIH KOSONG</div>
+        </div>
     </div>
 
-    <a href="#" class="btn-pusat">🌐 PUSAT/PANEL ( KLIK DISINI )</a>
+    <a href="https://api.whatsapp.com/send?phone=628818486388" target="_blank" class="btn-pusat">🌐 PUSAT/PANEL ( KLIK DISINI )</a>
 
+    <script>
+        function showNotif(pesan, warna = "rgba(74, 222, 128, 0.95)") {
+            const toast = document.getElementById("toast");
+            toast.innerText = pesan;
+            toast.style.background = warna;
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 3000);
+        }
+
+        function handleAddEmail() {
+            const target = document.getElementById('targetEmail').value;
+            const jml = document.getElementById('targetJml').value;
+            const container = document.getElementById('listContainer');
+            const noData = document.getElementById('noData');
+
+            if (!target || !jml) return showNotif("Data belum lengkap! ⚠️", "#ff4d4d");
+            if (noData) noData.remove();
+
+            const newItem = document.createElement('div');
+            newItem.className = 'list-item';
+            newItem.innerHTML = `<span>${target}</span> <b class="jml-val">${jml}</b> <span class="btn-del" onclick="hapusItem(this)">✕</span>`;
+            container.appendChild(newItem);
+            
+            showNotif("Email Berhasil Ditambah! ✅");
+            document.getElementById('targetEmail').value = "";
+            document.getElementById('targetJml').value = "";
+        }
+
+        function hapusItem(el) {
+            el.parentElement.remove();
+            showNotif("Data Berhasil Dihapus! 🗑️", "#ff4d4d");
+            
+            const container = document.getElementById('listContainer');
+            if (container.children.length === 0) {
+                container.innerHTML = '<div id="noData" style="font-size: 10px; color: #555; text-align: center;">DAFTAR MASIH KOSONG</div>';
+            }
+        }
+
+        function handleUpdate() {
+            const items = document.querySelectorAll('.list-item');
+            const currentOwner = document.getElementById('ownerName').value;
+
+            // Logika baru: Nama tetap terupdate meski daftar kosong
+            if (items.length === 0) {
+                showNotif("Owner " + currentOwner + " Tersimpan! ✅");
+                return; 
+            }
+
+            items.forEach(item => {
+                let jmlVal = item.querySelector('.jml-val');
+                let current = parseInt(jmlVal.innerText);
+                if (current > 0) {
+                    current--;
+                    jmlVal.innerText = current;
+                }
+                if (current === 0) {
+                    item.style.opacity = "0.3";
+                    setTimeout(() => item.remove(), 2000);
+                }
+            });
+
+            showNotif("Data " + currentOwner + " Berhasil Diupdate! 📈");
+        }
+    </script>
 </body>
 </html>
