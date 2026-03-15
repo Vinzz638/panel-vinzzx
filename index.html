@@ -1,154 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VINZZXHOST - FIXED</title>
+    <title>VINZZXHOST - NEON EDITION</title>
     <style>
-        body { background-color: #000000; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
-        .container { width: 100%; max-width: 380px; }
-        
-        .header { text-align: center; margin-bottom: 25px; }
-        .logo-circle { 
-            width: 100px; height: 100px; border-radius: 50%; border: 3px solid #00ff44; 
-            margin: 0 auto 12px; box-shadow: 0 0 15px #00ff44; 
-            background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; 
-        }
-        .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
-        .brand { font-size: 22px; font-weight: bold; letter-spacing: 2px; color: white; }
-
-        .btn-outline {
-            display: block; width: 100%; padding: 12px; border: 1px solid #00ff44; border-radius: 25px;
-            background: transparent; color: #00ff44; text-decoration: none; font-weight: bold;
-            margin-bottom: 25px; text-align: center; box-sizing: border-box; font-size: 13px;
+        body { 
+            background-color: #000; 
+            color: white; 
+            font-family: sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 40px 20px; 
+            margin: 0; 
         }
 
-        .card { background: #0a0a0a; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #1a1a1a; }
-        .title-section { color: white; font-size: 16px; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; }
-        .title-section::before { content: ""; display: inline-block; width: 4px; height: 18px; background: #00ff44; margin-right: 10px; }
+        .logo-v { 
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            border: 2px solid #4ade80; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 40px; 
+            color: #4ade80; 
+            box-shadow: 0 0 20px #4ade80; 
+            margin-bottom: 10px; 
+            font-weight: bold;
+        }
+
+        .brand { 
+            letter-spacing: 5px; 
+            margin-bottom: 25px; 
+            font-size: 22px; 
+            font-weight: bold;
+            text-transform: uppercase; 
+        }
+
+        .btn-sewa { 
+            border: 1px solid #4ade80; 
+            color: #4ade80; 
+            padding: 8px 25px; 
+            border-radius: 20px; 
+            text-decoration: none; 
+            font-size: 11px; 
+            margin-bottom: 35px; 
+        }
+
+        .card { 
+            background: #0d0d0d; 
+            border-radius: 15px; 
+            padding: 25px; 
+            width: 340px; 
+            border: 1px solid #1a1a1a; 
+            margin-bottom: 20px; 
+            box-sizing: border-box; 
+        }
+
+        .card-title { 
+            color: #4ade80; 
+            font-size: 14px; 
+            margin-bottom: 20px; 
+            border-left: 3px solid #4ade80; 
+            padding-left: 10px; 
+            font-weight: bold; 
+            text-align: left;
+        }
 
         input { 
-            width: 100%; padding: 12px; background: #151515; border: 1px solid #333; 
-            color: #00ff44; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; 
+            width: 100%; 
+            background: #161616; 
+            border: 1px solid #222; 
+            color: #ccc; 
+            padding: 14px; 
+            margin-bottom: 15px; 
+            border-radius: 10px; 
+            box-sizing: border-box; 
+            outline: none; 
+            text-align: left; 
+            font-size: 14px;
         }
 
-        .btn-grad { 
-            width: 100%; padding: 12px; border: none; border-radius: 8px; 
-            background: linear-gradient(45deg, #00b09b, #96c93d); color: black; font-weight: bold; cursor: pointer;
+        /* 🟢 Neon Lime buat Input Atas & Tengah */
+        .inp-editable { 
+            border: 1px solid #4ade80; 
+            color: #4ade80; /* Teks Neon Hijau */
+            font-weight: bold;
+            box-shadow: 0 0 5px rgba(74, 222, 128, 0.2);
         }
 
-        .btn-blue { 
-            background: linear-gradient(to right, #00d2ff, #3a7bd5); width: 100%; padding: 14px; 
-            border-radius: 10px; color: white; font-weight: bold; text-decoration: none; 
-            display: block; text-align: center; box-sizing: border-box; margin-top: 10px;
+        .inp-readonly { 
+            color: #4ade80; /* Teks Neon Hijau */
+            font-weight: bold; 
+            cursor: not-allowed; 
+            border: 1px solid #4ade80; /* Border Neon Hijau */
+            background: #0d0d0d;
+            box-shadow: 0 0 5px rgba(74, 222, 128, 0.2);
         }
 
-        .table-email { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .table-email td { padding: 12px 5px; border-top: 1px solid #1a1a1a; font-size: 13px; }
-        .limit-badge { background: #1a1a1a; color: #00ff44; padding: 2px 8px; border-radius: 4px; border: 1px solid #333; }
+        .btn-update { 
+            width: 100%; 
+            padding: 15px; 
+            background: linear-gradient(to right, #15803d, #4ade80); 
+            border: none; 
+            border-radius: 10px; 
+            color: black; 
+            font-weight: bold; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+        }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; z-index: 999; }
-        .modal-overlay.show { opacity: 1; visibility: visible; }
-        .modal-content { background: white; color: black; padding: 25px; border-radius: 20px; text-align: center; width: 250px; }
+        .card-config { 
+            background: #0d0d0d; 
+            border-radius: 15px; 
+            padding: 20px; 
+            width: 340px; 
+            border: 1px solid #1a1a1a; 
+            margin-bottom: 20px; 
+            box-sizing: border-box; 
+        }
+
+        .config-row { display: flex; gap: 10px; }
+        .inp-target { 
+            flex: 2; 
+            border: 1px solid rgba(74, 222, 128, 0.4); /* Neon Hijau Tipis */
+            color: #ccc;
+        }
+        .inp-jml { 
+            flex: 1; 
+            border: 1px solid rgba(74, 222, 128, 0.4); /* Neon Hijau Tipis */
+            color: #ccc;
+            text-align: center; 
+        }
+
+        .btn-add { 
+            width: 100%; 
+            padding: 12px; 
+            background: #1a1a1a; 
+            color: #fff; 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+
+        .btn-pusat { 
+            width: 340px; 
+            padding: 15px; 
+            background: linear-gradient(to right, #38bdf8, #2563eb); 
+            border: none; 
+            border-radius: 10px; 
+            color: white; 
+            font-weight: bold; 
+            text-decoration: none; 
+            text-align: center; 
+            text-transform: uppercase; 
+            font-size: 13px; 
+            display: block; 
+            box-sizing: border-box; 
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
     </style>
 </head>
 <body>
 
-<div class="modal-overlay" id="notifBerhasil">
-    <div class="modal-content">
-        <b style="font-size: 18px; color: #00b09b;">✓ BERHASIL</b>
-        <p style="font-size: 13px; color: #666;">Data Berhasil Dikirim!</p>
-        <button style="background: #3a7bd5; color: white; border: none; padding: 8px 30px; border-radius: 5px; font-weight: bold; cursor:pointer;" onclick="tutupNotif()">OK</button>
-    </div>
-</div>
-
-<div class="container">
-    <div class="header">
-        <div class="logo-circle">
-            <img src="https://ui-avatars.com/api/?name=V&background=000&color=0f4&size=128&bold=true">
-        </div>
-        <div class="brand">VINZZXHOST</div>
-    </div>
-
-    <a href="https://wa.me/628818486388" class="btn-outline">🌐 SEWA PANEL KLIK DISINI</a>
+    <div class="logo-v">V</div>
+    <div class="brand">VINZZXHOST</div>
+    <a href="#" class="btn-sewa">🌐 SEWA PANEL KLIK DISINI</a>
 
     <div class="card">
-        <div class="title-section">DATA PANEL</div>
-        <form action="https://formsubmit.co/GANTI_GMAIL_PANGKALAN@gmail.com" method="POST" id="formRess" onsubmit="kurangiLimit()">
-            
-            <input type="text" name="Owner_Name" value="Result Own Vinzz 👽">
-            
-            <input type="email" name="Kirim_Ke" placeholder="Email Tujuan Ress..." required>
-            
-            <input type="text" name="Isi_Ress" placeholder="Input Ress (Email|Pass)..." required>
-            
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://vinzz638.github.io/panel-vinzzx/#success">
-            <button type="submit" class="btn-grad">UPDATE DATA</button>
-        </form>
-    </div>
-
-    <div class="card">
-        <div class="title-section">Email Configuration</div>
-        <div style="display: flex; gap: 10px;">
-            <input type="text" id="inputEmail" placeholder="Target Email..." style="margin-bottom: 0;">
-            <input type="number" id="inputLimit" placeholder="Jml" style="width: 70px; margin-bottom: 0;">
-        </div>
-        <button class="btn-grad" style="margin-top: 15px; background: #1a1a1a; color: white; border: 1px solid #333;" onclick="tambahEmail()">ADD EMAIL</button>
-        <table class="table-email"><tbody id="listEmail"></tbody></table>
-    </div>
-
-    <a href="https://wa.me/628818486388" class="btn-blue">🌐 PUSAT/PANEL ( KLIK DISINI )</a>
-</div>
-
-<script>
-    if(window.location.hash === "#success") {
-        document.getElementById("notifBerhasil").classList.add("show");
-        window.location.hash = ""; 
-    }
-
-    function tutupNotif() { document.getElementById("notifBerhasil").classList.remove("show"); }
-
-    function simpanKeHP() {
-        localStorage.setItem('vinzz_final_fix_v2', document.getElementById('listEmail').innerHTML);
-    }
-
-    window.onload = function() {
-        const data = localStorage.getItem('vinzz_final_fix_v2');
-        if (data) { document.getElementById('listEmail').innerHTML = data; }
-    };
-
-    function tambahEmail() {
-        const email = document.getElementById("inputEmail").value;
-        const limit = document.getElementById("inputLimit").value || "0";
-        if (!email) return alert("Isi email target!");
+        <div class="card-title">DATA PANEL</div>
         
-        const table = document.getElementById("listEmail");
-        const row = table.insertRow(0);
-        row.innerHTML = `
-            <td style="color: #00ff44;">${email}</td>
-            <td style="text-align:center;"><span class="limit-val limit-badge">${limit}</span></td>
-            <td style="text-align: right; color: #ff416c; cursor:pointer;" onclick="hapusEmail(this)">🗑️</td>
-        `;
-        simpanKeHP();
-        document.getElementById("inputEmail").value = "";
-        document.getElementById("inputLimit").value = "";
-    }
+        <input type="text" class="inp-editable" value="Result Own Vinz 💀">
+        
+        <input type="text" class="inp-readonly" value="vinz0129@gmail.com" readonly>
+        
+        <button class="btn-update">UPDATE DATA</button>
+    </div>
 
-    function kurangiLimit() {
-        const limits = document.getElementsByClassName("limit-val");
-        if(limits.length > 0) {
-            let val = parseInt(limits[0].innerText);
-            if(val > 0) {
-                limits[0].innerText = val - 1;
-                simpanKeHP();
-            }
-        }
-    }
+    <div class="card-config">
+        <div class="card-title">Email Configuration</div>
+        <div class="config-row">
+            <input type="text" class="inp-target" placeholder="Target Email...">
+            <input type="text" class="inp-jml" placeholder="Jml">
+        </div>
+        <button class="btn-add">ADD EMAIL</button>
+    </div>
 
-    function hapusEmail(btn) {
-        if(confirm("Hapus?")) { btn.closest('tr').remove(); simpanKeHP(); }
-    }
-</script>
+    <a href="#" class="btn-pusat">🌐 PUSAT/PANEL ( KLIK DISINI )</a>
+
 </body>
 </html>
-
